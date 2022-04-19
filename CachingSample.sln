@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store.Abstrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Tests", "CachingSample.Store.Tests\CachingSample.Store.Tests.csproj", "{C6243CB5-359D-46CE-A5C2-5267B7C62A84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Caching", "CachingSample.Store.Caching\CachingSample.Store.Caching.csproj", "{F6C5BDA6-B1FF-4FD9-B81D-359E107CD403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Caching.Tests", "CachingSample.Store.Caching.Tests\CachingSample.Store.Caching.Tests.csproj", "{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{C6243CB5-359D-46CE-A5C2-5267B7C62A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6243CB5-359D-46CE-A5C2-5267B7C62A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6243CB5-359D-46CE-A5C2-5267B7C62A84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C5BDA6-B1FF-4FD9-B81D-359E107CD403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C5BDA6-B1FF-4FD9-B81D-359E107CD403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C5BDA6-B1FF-4FD9-B81D-359E107CD403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C5BDA6-B1FF-4FD9-B81D-359E107CD403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

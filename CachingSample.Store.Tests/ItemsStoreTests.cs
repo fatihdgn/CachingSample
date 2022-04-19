@@ -35,16 +35,6 @@ public class ItemsStoreTests
     }
 
     [Fact]
-    public async Task Get_ShouldThrowArgumentNullException_WithNullItem()
-    {
-#pragma warning disable CS8625 // For testing purposes
-        var act = async () => await sut.Get(null);
-#pragma warning restore CS8625
-        await act.Should().ThrowExactlyAsync<ArgumentNullException>();
-    }
-
-
-    [Fact]
     public async Task Get_ShouldReturnItem_WithValidId()
     {
         var (key, value) = _items.FirstOrDefault();
@@ -55,7 +45,7 @@ public class ItemsStoreTests
     [Fact]
     public async Task Get_ShouldThrowException_WithUndefinedId()
     {
-        var act = async () => await sut.Get(StoreItemId.From(Guid.NewGuid()));
+        var act = async () => await sut.Get(new StoreItemId(Guid.NewGuid()));
         await act.Should().ThrowExactlyAsync<Exception>();
     }
 
@@ -71,7 +61,7 @@ public class ItemsStoreTests
     [Fact]
     public async Task Add_ShouldAddTheItem_WithDifferentIdDefined()
     {
-        var id = StoreItemId.From(System.Guid.NewGuid());
+        var id = new StoreItemId(Guid.NewGuid());
         var item = await sut.Add(new StoreItem(id, "item", "description", 100));
         item.Should().NotBeNull();
         item.Id.Should().NotBe(id);
@@ -105,15 +95,6 @@ public class ItemsStoreTests
     }
 
     [Fact]
-    public async Task Delete_ShouldThrowArgumentNullException_WithNullItem()
-    {
-#pragma warning disable CS8625 // For testing purposes
-        var act = async () => await sut.Delete(null);
-#pragma warning restore CS8625
-        await act.Should().ThrowExactlyAsync<ArgumentNullException>();
-    }
-
-    [Fact]
     public async Task Delete_ShouldReturnTrue_WithDefinedId()
     {
         var (key, _) = _items.FirstOrDefault();
@@ -124,7 +105,7 @@ public class ItemsStoreTests
     [Fact]
     public async Task Delete_ShouldReturnTrue_WithNotDefinedId()
     {
-        var id = StoreItemId.From(Guid.NewGuid());
+        var id = new StoreItemId(Guid.NewGuid());
         var result = await sut.Delete(id);
         result.Should().BeFalse();
     }

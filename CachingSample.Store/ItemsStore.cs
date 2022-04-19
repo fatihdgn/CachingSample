@@ -23,8 +23,6 @@ public class ItemsStore : IStore<StoreItem>
 
     public async ValueTask<StoreItem> Get(StoreItemId id)
     {
-        if (id is null) throw new ArgumentNullException(nameof(id));
-
         await Task.Delay(10); // Simulate I/O
 
         if (!_items.ContainsKey(id))
@@ -39,7 +37,7 @@ public class ItemsStore : IStore<StoreItem>
 
         await Task.Delay(10); // Simulate I/O
 
-        var newId = StoreItemId.From(Guid.NewGuid());
+        var newId = new StoreItemId(Guid.NewGuid());
         return _items[newId] = item with { Id = newId };
     }
 
@@ -57,8 +55,6 @@ public class ItemsStore : IStore<StoreItem>
 
     public async Task<bool> Delete(StoreItemId id)
     {
-        if (id is null) throw new ArgumentNullException(nameof(id));
-
         await Task.Delay(10); // Simulate I/O
 
         return _items.TryRemove(id, out _);

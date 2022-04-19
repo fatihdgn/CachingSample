@@ -1,5 +1,5 @@
-﻿using ValueOf;
+﻿using ValueExtensions;
 
 namespace CachingSample.Store.Abstractions;
 
-public class StoreItemId : ValueOf<Guid, StoreItemId> { }
+public readonly record struct StoreItemId(Guid Value) : ValueOf<Guid, StoreItemId>.AsStruct;

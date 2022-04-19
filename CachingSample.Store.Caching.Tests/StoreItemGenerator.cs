@@ -3,7 +3,7 @@ using CachingSample.Store.Abstractions;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CachingSample.Store.Tests;
+namespace CachingSample.Store.Caching.Tests;
 
 public static class StoreItemGenerator
 {
