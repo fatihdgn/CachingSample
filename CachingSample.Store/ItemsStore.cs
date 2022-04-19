@@ -8,9 +8,10 @@ public class ItemsStore : IStore<StoreItem>
     private readonly ConcurrentDictionary<StoreItemId, StoreItem> _items;
     public ItemsStore(ConcurrentDictionary<StoreItemId, StoreItem> items)
     {
-        _items = items;
+        _items = items ?? throw new ArgumentNullException(nameof(items));
     }
-    
+    public ItemsStore() : this(new ConcurrentDictionary<StoreItemId, StoreItem>()) { }
+
     public async IAsyncEnumerable<StoreItem> GetAll()
     {
         foreach (var item in _items)
@@ -41,7 +42,7 @@ public class ItemsStore : IStore<StoreItem>
         var newId = StoreItemId.From(Guid.NewGuid());
         return _items[newId] = item with { Id = newId };
     }
-    
+
     public async Task<StoreItem> Update(StoreItem item)
     {
         if (item is null) throw new ArgumentNullException(nameof(item));
