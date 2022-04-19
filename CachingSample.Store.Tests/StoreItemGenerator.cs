@@ -1,12 +1,9 @@
 ﻿using Bogus;
 using CachingSample.Store.Abstractions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CachingSample.Store;
+namespace CachingSample.Store.Tests;
 
 public static class StoreItemGenerator
 {
@@ -14,10 +11,14 @@ public static class StoreItemGenerator
     static StoreItemGenerator()
     {
         storeItemFaker = new Faker<StoreItem>()
-            .RuleFor(o => o.Id, f => StoreItemId.From(f.Random.Guid()))
-            .RuleFor(o => o.Name, f => f.Commerce.ProductName())
-            .RuleFor(o => o.Price, f => decimal.Parse(f.Commerce.Price(0, 100, 2)))
-            .RuleFor(o => o.Description, f => f.Lorem.Paragraph());
+            .CustomInstantiator(f =>
+                new StoreItem(
+                    StoreItemId.From(f.Random.Guid()),
+                    f.Commerce.ProductName(),
+                    f.Lorem.Paragraph(),
+                    decimal.Parse(f.Commerce.Price(0, 100, 2))
+                )
+            );
     }
     public static StoreItem Generate() => storeItemFaker.Generate();
     public static IEnumerable<StoreItem> Generate(int count) => Enumerable.Range(0, count).Select(i => Generate());

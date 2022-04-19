@@ -1,10 +1,13 @@
 ﻿namespace CachingSample.Store.Abstractions;
 
-public interface IStore
+public interface IStore<TItem>
+    where TItem : IStoreItem
 {
-    IAsyncEnumerable<IStoreItem> GetAll();
-    ValueTask<IStoreItem> Get(StoreItemId id);
-    Task<IStoreItem> Add(IStoreItem item);
-    Task<IStoreItem> Update(StoreItemId item);
-    Task<IStoreItem> Delete(StoreItemId id);
+    IAsyncEnumerable<TItem> GetAll();
+    // Maybe I can add NotFound
+    ValueTask<TItem> Get(StoreItemId id);
+    Task<TItem> Add(TItem item);
+    Task<TItem> Update(TItem item);
+    // Maybe I can add NotFound
+    Task<bool> Delete(StoreItemId id);
 }

@@ -3,49 +3,63 @@ using System.Collections.Concurrent;
 
 namespace CachingSample.Store;
 
-public class ItemsStore : IStore
+public class ItemsStore : IStore<StoreItem>
 {
-    private static readonly ConcurrentDictionary<StoreItemId, IStoreItem> _items = new ConcurrentDictionary<StoreItemId, IStoreItem>();
-    static ItemsStore()
+    private readonly ConcurrentDictionary<StoreItemId, StoreItem> _items;
+    public ItemsStore(ConcurrentDictionary<StoreItemId, StoreItem> items)
     {
-        Populate();
+        _items = items;
     }
-    private static void Populate()
+    
+    public async IAsyncEnumerable<StoreItem> GetAll()
     {
-        if (_items.Count == 0)
+        foreach (var item in _items)
         {
-            foreach (var item in StoreItemGenerator.Generate(5))
-            {
-                _items.TryAdd(item.Id, item);
-            }
+            await Task.Delay(10); // Simulate I/O
+            yield return item.Value;
         }
     }
 
-    public Task<IStoreItem> Add(IStoreItem item)
+    public async ValueTask<StoreItem> Get(StoreItemId id)
     {
-        throw new NotImplementedException();
+        if (id is null) throw new ArgumentNullException(nameof(id));
+
+        await Task.Delay(10); // Simulate I/O
+
+        if (!_items.ContainsKey(id))
+            throw new Exception("Item not found");
+
+        return _items[id];
     }
 
-    public Task<IStoreItem> Delete(StoreItemId id)
+    public async Task<StoreItem> Add(StoreItem item)
     {
-        throw new NotImplementedException();
+        if (item is null) throw new ArgumentNullException(nameof(item));
+
+        await Task.Delay(10); // Simulate I/O
+
+        var newId = StoreItemId.From(Guid.NewGuid());
+        return _items[newId] = item with { Id = newId };
+    }
+    
+    public async Task<StoreItem> Update(StoreItem item)
+    {
+        if (item is null) throw new ArgumentNullException(nameof(item));
+        await Task.Delay(10); // Simulate I/O
+
+        if (!_items.ContainsKey(item.Id))
+            throw new Exception("Item not found");
+
+        _items[item.Id] = item;
+        return item;
     }
 
-    public ValueTask<IStoreItem> Get(StoreItemId id)
+    public async Task<bool> Delete(StoreItemId id)
     {
-        throw new NotImplementedException();
+        if (id is null) throw new ArgumentNullException(nameof(id));
+
+        await Task.Delay(10); // Simulate I/O
+
+        return _items.TryRemove(id, out _);
     }
-
-    public IAsyncEnumerable<IStoreItem> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<IStoreItem> Update(StoreItemId item)
-    {
-        throw new NotImplementedException();
-    }
-
-
-
 }
