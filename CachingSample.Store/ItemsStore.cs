@@ -21,7 +21,7 @@ public class ItemsStore : IStore<StoreItem>
         }
     }
 
-    public async ValueTask<StoreItem> Get(StoreItemId id)
+    public async Task<StoreItem> Get(StoreItemId id)
     {
         await Task.Delay(10); // Simulate I/O
 

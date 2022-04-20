@@ -5,7 +5,7 @@ public interface IStore<TItem>
 {
     IAsyncEnumerable<TItem> GetAll();
     // Maybe I can add NotFound
-    ValueTask<TItem> Get(StoreItemId id);
+    Task<TItem> Get(StoreItemId id);
     Task<TItem> Add(TItem item);
     Task<TItem> Update(TItem item);
     // Maybe I can add NotFound
