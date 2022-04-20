@@ -5,11 +5,11 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.CLI", "CachingSample.CLI\CachingSample.CLI.csproj", "{03AF5147-1BCE-4CAF-BCE4-EBC96390F209}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store", "CachingSample.Store\CachingSample.Store.csproj", "{C29CFECA-6884-4230-81C7-6979C2E82BB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store.Memory", "CachingSample.Store.Memory\CachingSample.Store.Memory.csproj", "{C29CFECA-6884-4230-81C7-6979C2E82BB8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store.Abstractions", "CachingSample.Store.Abstractions\CachingSample.Store.Abstractions.csproj", "{5ED616D9-708A-4969-94B2-CA3AFCED14E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Tests", "CachingSample.Store.Tests\CachingSample.Store.Tests.csproj", "{C6243CB5-359D-46CE-A5C2-5267B7C62A84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Memory.Tests", "CachingSample.Store.Memory.Tests\CachingSample.Store.Memory.Tests.csproj", "{C6243CB5-359D-46CE-A5C2-5267B7C62A84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Caching", "CachingSample.Store.Caching\CachingSample.Store.Caching.csproj", "{F6C5BDA6-B1FF-4FD9-B81D-359E107CD403}"
 EndProject

@@ -7,17 +7,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 		<PackageReference Include="System.Text.Json" Version="6.0.3" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\CachingSample.Store\CachingSample.Store.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
 			<_Parameter1>$(AssemblyName).Tests</_Parameter1>
 		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CachingSample.Store.Abstractions\CachingSample.Store.Abstractions.csproj" />
 	</ItemGroup>
 </Project>

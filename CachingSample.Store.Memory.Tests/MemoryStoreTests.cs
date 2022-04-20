@@ -6,22 +6,22 @@ using Xunit;
 using System.Linq;
 using System.Collections.Concurrent;
 
-namespace CachingSample.Store.Tests;
+namespace CachingSample.Store.Memory.Tests;
 
-public class ItemsStoreTests
+public class MemoryStoreTests
 {
-    private readonly ConcurrentDictionary<StoreItemId, StoreItem> _items;
-    private readonly ItemsStore sut;
-    public ItemsStoreTests()
+    private readonly ConcurrentDictionary<StoreItemId, MemoryStoreItem> _items;
+    private readonly MemoryStore sut;
+    public MemoryStoreTests()
     {
-        _items = new ConcurrentDictionary<StoreItemId, StoreItem>();
+        _items = new ConcurrentDictionary<StoreItemId, MemoryStoreItem>();
         Populate(_items, 5);
-        sut = new ItemsStore(_items);
+        sut = new MemoryStore(_items);
     }
 
-    private static void Populate(ConcurrentDictionary<StoreItemId, StoreItem> items, int count)
+    private static void Populate(ConcurrentDictionary<StoreItemId, MemoryStoreItem> items, int count)
     {
-        foreach (var item in StoreItemGenerator.Generate(count))
+        foreach (var item in MemoryStoreItemGenerator.Generate(count))
         {
             items.TryAdd(item.Id, item);
         }
@@ -59,15 +59,6 @@ public class ItemsStoreTests
     }
 
     [Fact]
-    public async Task Add_ShouldAddTheItem_WithDifferentIdDefined()
-    {
-        var id = new StoreItemId(Guid.NewGuid());
-        var item = await sut.Add(new StoreItem(id, "item", "description", 100));
-        item.Should().NotBeNull();
-        item.Id.Should().NotBe(id);
-    }
-
-    [Fact]
     public async Task Update_ShouldThrowArgumentNullException_WithNullItem()
     {
 #pragma warning disable CS8625 // For testing purposes
@@ -79,7 +70,7 @@ public class ItemsStoreTests
     [Fact]
     public async Task Update_ShouldThrowException_WithDifferentIdDefined()
     {
-        var newItem = StoreItemGenerator.Generate();
+        var newItem = MemoryStoreItemGenerator.Generate();
         var act = async () => await sut.Update(newItem);
         await act.Should().ThrowExactlyAsync<Exception>();
     }
