@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store.Memory"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store.Abstractions", "CachingSample.Store.Abstractions\CachingSample.Store.Abstractions.csproj", "{5ED616D9-708A-4969-94B2-CA3AFCED14E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Memory.Tests", "CachingSample.Store.Memory.Tests\CachingSample.Store.Memory.Tests.csproj", "{C6243CB5-359D-46CE-A5C2-5267B7C62A84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store.Memory.Tests", "CachingSample.Store.Memory.Tests\CachingSample.Store.Memory.Tests.csproj", "{C6243CB5-359D-46CE-A5C2-5267B7C62A84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Caching", "CachingSample.Store.Caching\CachingSample.Store.Caching.csproj", "{F6C5BDA6-B1FF-4FD9-B81D-359E107CD403}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store.Caching.Default", "CachingSample.Store.Caching.Default\CachingSample.Store.Caching.Default.csproj", "{F6C5BDA6-B1FF-4FD9-B81D-359E107CD403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Caching.Tests", "CachingSample.Store.Caching.Tests\CachingSample.Store.Caching.Tests.csproj", "{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CachingSample.Store.Caching.Default.Tests", "CachingSample.Store.Caching.Default.Tests\CachingSample.Store.Caching.Default.Tests.csproj", "{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingSample.Store.Caching.Abstractions", "CachingSample.Store.Caching.Abstractions\CachingSample.Store.Caching.Abstractions.csproj", "{1FCA1836-9D24-44F4-9E2F-B0C2A8E9B416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A44C7C2-BC61-4B5A-8E6F-DE5CD73EC21D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FCA1836-9D24-44F4-9E2F-B0C2A8E9B416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FCA1836-9D24-44F4-9E2F-B0C2A8E9B416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FCA1836-9D24-44F4-9E2F-B0C2A8E9B416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FCA1836-9D24-44F4-9E2F-B0C2A8E9B416}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

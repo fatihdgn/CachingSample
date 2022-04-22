@@ -1,16 +1,17 @@
 ﻿using CachingSample.Store.Abstractions;
+using CachingSample.Store.Caching.Abstractions;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
 namespace CachingSample.Store.Caching;
 
-public class CachedStore<TItem> : IStore<TItem>
+public class DefaultCachedStore<TItem> : ICachedStore<TItem>
     where TItem : IStoreItem
 {
     private readonly IStore<TItem> _store;
     private readonly IDistributedCache _cache;
     private readonly Type _itemType;
-    public CachedStore(IStore<TItem> store, IDistributedCache cache)
+    public DefaultCachedStore(IStore<TItem> store, IDistributedCache cache)
     {
         _store = store ?? throw new ArgumentNullException(nameof(store));
         _cache = cache ?? throw new ArgumentNullException(nameof(cache));

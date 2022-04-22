@@ -25,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\CachingSample.Store.Caching\CachingSample.Store.Caching.csproj" />
+		<ProjectReference Include="..\CachingSample.Store.Caching.Default\CachingSample.Store.Caching.Default.csproj" />
 		<ProjectReference Include="..\CachingSample.Store.Memory\CachingSample.Store.Memory.csproj" />
 	</ItemGroup>
 

@@ -8,11 +8,11 @@ using System.Collections.Concurrent;
 
 namespace CachingSample.Store.Memory.Tests;
 
-public class MemoryStoreTests
+public class DelayedMemoryStoreTests
 {
     private readonly ConcurrentDictionary<StoreItemId, MemoryStoreItem> _items;
     private readonly MemoryStore sut;
-    public MemoryStoreTests()
+    public DelayedMemoryStoreTests()
     {
         _items = new ConcurrentDictionary<StoreItemId, MemoryStoreItem>();
         Populate(_items, 5);

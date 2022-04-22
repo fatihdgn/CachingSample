@@ -3,28 +3,31 @@ using System.Collections.Concurrent;
 
 namespace CachingSample.Store.Memory;
 
-public class MemoryStore<TItem> : IStore<TItem>
+public class DelayedMemoryStore<TItem> : IStore<TItem>
     where TItem : IStoreItem
 {
     private readonly ConcurrentDictionary<StoreItemId, TItem> _items;
-    public MemoryStore(ConcurrentDictionary<StoreItemId, TItem> items)
+    public DelayedMemoryStore(ConcurrentDictionary<StoreItemId, TItem> items)
     {
         _items = items ?? throw new ArgumentNullException(nameof(items));
     }
-    public MemoryStore() : this(new ConcurrentDictionary<StoreItemId, TItem>()) { }
+    public DelayedMemoryStore() : this(new ConcurrentDictionary<StoreItemId, TItem>()) { }
+
+    private const int MillisecondsDelay = 3;
+    private Task Delay() => Task.Delay(MillisecondsDelay);
 
     public async IAsyncEnumerable<TItem> GetAll()
     {
         foreach (var item in _items)
         {
-            await Task.Delay(10); // Simulate I/O
+            await Delay(); // to simulate I/O
             yield return item.Value;
         }
     }
 
     public async Task<TItem> Get(StoreItemId id)
     {
-        await Task.Delay(10); // Simulate I/O
+        await Delay(); // to simulate I/O
 
         if (!_items.ContainsKey(id))
             throw new Exception("Item not found");
@@ -36,7 +39,7 @@ public class MemoryStore<TItem> : IStore<TItem>
     {
         if (item is null) throw new ArgumentNullException(nameof(item));
 
-        await Task.Delay(10); // Simulate I/O
+        await Delay(); // to simulate I/O
 
         return _items[item.Id] = item;
     }
@@ -44,7 +47,7 @@ public class MemoryStore<TItem> : IStore<TItem>
     public async Task<TItem> Update(TItem item)
     {
         if (item is null) throw new ArgumentNullException(nameof(item));
-        await Task.Delay(10); // Simulate I/O
+        await Delay(); // to simulate I/O
 
         if (!_items.ContainsKey(item.Id))
             throw new Exception("Item not found");
@@ -55,13 +58,13 @@ public class MemoryStore<TItem> : IStore<TItem>
 
     public async Task<bool> Delete(StoreItemId id)
     {
-        await Task.Delay(10); // Simulate I/O
+        await Delay(); // to simulate I/O
 
         return _items.TryRemove(id, out _);
     }
 }
 
-public class MemoryStore : MemoryStore<MemoryStoreItem>
+public class MemoryStore : DelayedMemoryStore<MemoryStoreItem>
 {
     public MemoryStore()
     {
