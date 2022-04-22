@@ -17,7 +17,7 @@ Just run the application from console.
 --cached - whether to use the cached version of the store (default: false)
 
 --count \<int\> - the number of items to generate (default: 100)
-s
+
 --iteration \<int\> - the number of times to iterate get all, get and update operations (default: 5)
 
 ## Results
